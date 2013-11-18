@@ -1,6 +1,6 @@
 // @file Version: 1.0
 // @file Name: mission_ArmedDiversquad.sqf
-// @file Author: JoSchaap 
+// @file Author: JoSchaap
 
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf";
@@ -19,13 +19,11 @@ diag_log format["WASTELAND SERVER - Main Mission Started: %1",_missionType];
 //Get Mission Location
 _positions =
 [
-	[25461.8, 23708.4],
-	[22051.0, 12723.3],
-	[13285.9, 14049.9],
-	[8445.31, 7125.42],
-	[3634.34, 17198.5],
-	[6251.06, 22687.6]
-]; 
+        [2580.06, 6032.54],
+        [6654.43, 4822.27],
+        [4286.94, 2530.58],
+        [2073.06, 1027.24]
+];
 _randomPos = _positions call BIS_fnc_SelectRandom;
 
 diag_log format["WASTELAND SERVER - Main Mission Waiting to run: %1",_missionType];
@@ -56,12 +54,12 @@ _picture = getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "picture")
 _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _vehicle >> "displayName");
 _hint = parseText format
 [
-	"<t align='center' color='%4' shadow='2' size='1.75'>Main Objective</t><br/>" +
-	"<t align='center' color='%4'>------------------------------</t><br/>" +
-	"<t align='center' color='%5' size='1.25'>%1</t><br/>" +
-	"<t align='center'><img size='5' image='%2'/></t><br/>" +
-	"<t align='center' color='%5'>An armed expedition is trying to recover sunken ammo crates near the marker.<br/>If you want to capture them, you will need diving gear and an underwater weapon.</t>",
-	_missionType, _picture, _vehicleName,  mainMissionColor, subTextColor
+        "<t align='center' color='%4' shadow='2' size='1.75'>Main Objective</t><br/>" +
+        "<t align='center' color='%4'>------------------------------</t><br/>" +
+        "<t align='center' color='%5' size='1.25'>%1</t><br/>" +
+        "<t align='center'><img size='5' image='%2'/></t><br/>" +
+        "<t align='center' color='%5'>An armed expedition is trying to recover sunken ammo crates near the marker.<br/>If you want to capture them, you will need diving gear and an underwater weapon.</t>",
+        _missionType, _picture, _vehicleName, mainMissionColor, subTextColor
 ];
 [_hint] call hintBroadcast;
 
@@ -70,9 +68,9 @@ _startTime = floor(time);
 
 waitUntil
 {
-    sleep 1; 
-	_playerPresent = false;
-	_currTime = floor(time);
+    sleep 1;
+        _playerPresent = false;
+        _currTime = floor(time);
     if(_currTime - _startTime >= mainMissionTimeout) then {_result = 1;};
     {if((isPlayer _x) AND (_x distance _slbox <= missionRadiusTrigger)) then {_playerPresent = true};}forEach playableUnits;
     _unitsAlive = ({alive _x} count units _CivGrpM);
@@ -87,20 +85,20 @@ _slbox2 setVariable ["R3F_LOG_disabled", false, true];
 
 if(_result == 1) then
 {
-	//Mission Failed.
-	if not(isNil "_slbox") then {deleteVehicle _slbox;};
-	if not(isNil "_slbox2") then {deleteVehicle _slbox2;};
-	if not(isNil "_vehicle") then {deleteVehicle _vehicle;};
-	{if (vehicle _x != _x) then { deleteVehicle vehicle _x; }; deleteVehicle _x;}forEach units _CivGrpM;
+        //Mission Failed.
+        if not(isNil "_slbox") then {deleteVehicle _slbox;};
+        if not(isNil "_slbox2") then {deleteVehicle _slbox2;};
+        if not(isNil "_vehicle") then {deleteVehicle _vehicle;};
+        {if (vehicle _x != _x) then { deleteVehicle vehicle _x; }; deleteVehicle _x;}forEach units _CivGrpM;
     deleteGroup _CivGrpM;
     _hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Objective Failed</t><br/><t align='center' color='%2'>------------------------------</t><br/><t align='center' color='%2' size='1.25'>%1</t><br/><t align='center' color='%3'>Objective failed, better luck next time.</t>", _missionType, failMissionColor, subTextColor];
-	[_hint] call hintBroadcast;
+        [_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Main Mission Failed: %1",_missionType];
 } else {
-	//Mission Complete.
+        //Mission Complete.
     deleteGroup _CivGrpM;
     _hint = parseText format ["<t align='center' color='%2' shadow='2' size='1.75'>Objective Complete</t><br/><t align='center' color='%2'>------------------------------</t><br/><t align='center' color='%3' size='1.25'>%1</t><br/><t align='center' color='%3'>The sunken crates have been captured, well done.</t>", _missionType, successMissionColor, subTextColor];
-	[_hint] call hintBroadcast;
+        [_hint] call hintBroadcast;
     diag_log format["WASTELAND SERVER - Main Mission Success: %1",_missionType];
 };
 
