@@ -77,7 +77,7 @@ _createVehicle = {
 };
 
 _vehicles = [];
-_vehicles set [0, [_helipick, [7108.42,5996.3], 284, _groupsm] call _createVehicle];  // static value update when porting to different maps
+_vehicles set [0, [_helipick, [7945.76,3755.94], 284, _groupsm] call _createVehicle];  // static value update when porting to different maps
 
 _leader = driver (_vehicles select 0);
 _groupsm selectLeader _leader;
