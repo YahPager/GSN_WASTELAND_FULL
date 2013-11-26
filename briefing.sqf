@@ -119,8 +119,23 @@ player createDiaryRecord["GSN",
 
 player createDiaryRecord ["changelog",
 [
+"0.9e",
+"
+<br/> [Added] - Territory system
+<br/> [Added] - Jumping option (step over while running)
+<br/> [Added] - New weapons from v1.04 update
+<br/> [Changed] - Water and food now use water bottles and baked beans
+<br/> [Fixed] - Store object purchases not operating as intended
+<br/> [Fixed] - Objects purchased from stores not saving properly
+<br/> [Fixed] - Minor server-side memory leak
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
 "0.9d",
 "
+<br/> [Added] - Store object purchases
 <br/> [Changed] - New UI by KoS
 "
 ]];
@@ -140,10 +155,9 @@ player createDiaryRecord ["changelog",
 [
 "0.9b",
 "
-<br/> [Initial release] - Welcome to stratis!
+<br/> [Initial release] - Welcome to Stratis!
 "
 ]];
-
 
 player createDiaryRecord ["credits",
 [
