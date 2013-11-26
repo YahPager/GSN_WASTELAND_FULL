@@ -15,34 +15,34 @@
 // Capture point monitoring explanation:
 
 // 1. Loop through each player on the server to see if they have a variable
-//    called TERRITORY_OCCUPATION (which their client sets on them when they
-//    move into a territory zone) and collect into a KEY:VALUE pair
-//    containing the player and the territory zone they're in
+// called TERRITORY_OCCUPATION (which their client sets on them when they
+// move into a territory zone) and collect into a KEY:VALUE pair
+// containing the player and the territory zone they're in
 //
 // 2. Reduce this array down into an array of each territory currently occupied
-//    and an array of the players in that zone
+// and an array of the players in that zone
 //
 // 3. Call _handleCapPointTick with this array. This goes through each territory
-//    in turn and compares the current occupants with those from the previous tick
+// in turn and compares the current occupants with those from the previous tick
 //
 // 4. For each territory we call _sideCountsForPlayerArray which returns the
-//    relative size of each team in the area
-// 
+// relative size of each team in the area
+//
 // 5. The team counts are then passed to _handleSideCounts which assesses
-//    the action to be taken for each territory: CAPTURE< BLOCK or RESET
+// the action to be taken for each territory: CAPTURE< BLOCK or RESET
 //
-//    CAPTURE means that the currently dominant team is uncontested and the
-//    capture timer should tick up
+// CAPTURE means that the currently dominant team is uncontested and the
+// capture timer should tick up
 //
-//    BLOCK means the territory is contested and the capture timer does not
-//    move
+// BLOCK means the territory is contested and the capture timer does not
+// move
 //
-//    RESET means that the previous timer value needs to be reset as the
-//    dominant team in that territory has changed since the last tick
+// RESET means that the previous timer value needs to be reset as the
+// dominant team in that territory has changed since the last tick
 //
 // 6. If the territory timer has reached CAPTURE_PERIOD then the territory
-//    ownership changes in favour of the dominant team. Notifications are sent
-//    and the team gets some money.
+// ownership changes in favour of the dominant team. Notifications are sent
+// and the team gets some money.
 
 // In addition, the server gives each player a TERRITORY_ACTIVITY variable which
 // denotes capture activity
@@ -68,7 +68,7 @@ currentTerritoryDetails = [];
 {
     _markerName = _x select 0;
     //diag_log format ["Adding %1 to lastCapturePointDetails", _markerName];
-    currentTerritoryDetails = currentTerritoryDetails + [[_markerName, [], 0, ""]];
+    currentTerritoryDetails set [count currentTerritoryDetails, [_markerName, [], 0, ""]];
 } forEach (call config_territory_markers);
 
 // This will track how long each loop takes, to monitor how long it really ends up taking when
@@ -144,9 +144,9 @@ _nameForSideStr = {
 
     _sideName = "";
     switch (_side) do {
-        case "WEST": { _sideName = "Blufor"; };
-        case "EAST": { _sideName = "Opfor"; };
-        case "GUER": { _sideName = "Gfor"; };
+        case "WEST": { _sideName = "BLUFOR"; };
+        case "EAST": { _sideName = "OPFOR"; };
+        case "GUER": { _sideName = "Independent"; };
         default { _sideName = ""; };
     };
 
@@ -176,7 +176,7 @@ _markerColorForSideStr = {
 
 // Count players in a particular area for each side, and calculate if its
 // uncontested or contested, and whether there's a dominant side
-_sideCountsForPlayerArray = { 
+_sideCountsForPlayerArray = {
     //diag_log format["_sideCountsForPlayerArray called with %1", _this];
 
     private['_players', '_blueCount', '_redCount', '_greenCount', '_contested'];
@@ -204,13 +204,13 @@ _sideCountsForPlayerArray = {
             _contested = true;
         };
 
-        if (_blueCount > 0 && !_contested) then {   
+        if (_blueCount > 0 && !_contested) then {
             _dominantSide = "WEST";
         };
-        if (_redCount > 0 && !_contested) then {   
+        if (_redCount > 0 && !_contested) then {
             _dominantSide = "EAST";
         };
-        if (_greenCount > 0 && !_contested) then {   
+        if (_greenCount > 0 && !_contested) then {
             _dominantSide = "GUER";
         };
     };
@@ -243,7 +243,7 @@ _handleSideCounts = {
     _newAreaContested = _newSideCounts select 3;
     _newDominantSide = _newSideCounts select 4;
 
-    _action = "";  // CAPTURE, BLOCK, RESET
+    _action = ""; // CAPTURE, BLOCK, RESET
 
     if (!_newAreaContested) then {
         // Territory is currently uncontested. Was the previous state uncontested and the same side?
@@ -333,7 +333,7 @@ _handleCapPointTick = {
     
     //diag_log format["_handleCapPointTick called with %1", _this];
 
-    // Into this method comes two arrays. One is the master array called _currentTerritoryData, containing all the 
+    // Into this method comes two arrays. One is the master array called _currentTerritoryData, containing all the
     // cap points, known players within that area, and the timer count for that area.
 
     // The second array is the current list of cap points and players at that location
@@ -345,9 +345,9 @@ _handleCapPointTick = {
 
     // The data structure is as follows:
     // [
-    //  [NAME_OF_CAP_POINT, [PLAYERS, AT, POINT], uncontestedOccupiedTime, currentPointOwners]
+    // [NAME_OF_CAP_POINT, [PLAYERS, AT, POINT], uncontestedOccupiedTime, currentPointOwners]
     // ]
-    // 
+    //
 
     // Known to be the same as _currentTerritoryData
     _count = count _currentTerritoryData;
@@ -383,15 +383,15 @@ _handleCapPointTick = {
             _newTerritoryOccupiers = _newTerritoryDetails select 1;
 
             // Ok players have hanged. Contested or not?
-            _currentSideCounts = [_currentTerritoryOccupiers] call _sideCountsForPlayerArray; 
+            _currentSideCounts = [_currentTerritoryOccupiers] call _sideCountsForPlayerArray;
             _newSideCounts = [_newTerritoryOccupiers] call _sideCountsForPlayerArray;
 
             _currentDominantSide = _currentSideCounts select 4;
             _newDominantSide = _newSideCounts select 4;
             _newContestedStatus = _newSideCounts select 3;
 
-            //diag_log format["  _currentSideCounts: %1", _currentSideCounts];
-            //diag_log format["  _newSideCounts: %1", _newSideCounts];
+            //diag_log format[" _currentSideCounts: %1", _currentSideCounts];
+            //diag_log format[" _newSideCounts: %1", _newSideCounts];
 
             _action = [_currentSideCounts, _newSideCounts] call _handleSideCounts;
 
@@ -411,7 +411,7 @@ _handleCapPointTick = {
                         _configEntry = [(call config_territory_markers), { _x select 0 == _currentTerritoryName }] call BIS_fnc_conditionalSelect;
                         _territoryDescriptiveName = (_configEntry select 0) select 1;
 
-                        [_territoryDescriptiveName, _currentTerritoryOwner] call _onCaptureStarted;                        
+                        [_territoryDescriptiveName, _currentTerritoryOwner] call _onCaptureStarted;
                     };
 
                     _newCapPointTimer = _newCapPointTimer + realLoopTime
@@ -470,11 +470,11 @@ _handleCapPointTick = {
 
 
 //////////////////////////////////////////////////////////////////////////////
-// MAIN TERRITORY MONITOR LOOP                                              //
+// MAIN TERRITORY MONITOR LOOP //
 //////////////////////////////////////////////////////////////////////////////
 
 while{true} do
-{	
+{        
     private['_territoryOccupiersMapSingle', '_territoryOccupiersMapConsolidated', '_currentTerritoryName', '_currentTerritoryOccupiers', '_newCapturePointDetails'];
 
     _initTime = diag_tickTime;
@@ -494,7 +494,7 @@ while{true} do
                 // Make the entry
                 //diag_log format["%1 has TERRITORY_OCCUPATION for %2", name _x, _curCapPoint];
                 //diag_log format["CAP PLAYER LOOP: Adding %1 to _territoryOccupiersMapSingle at %2", _x, _curCapPoint];
-                _territoryOccupiersMapSingle = _territoryOccupiersMapSingle + [[_curCapPoint, _x]];
+                _territoryOccupiersMapSingle set [count _territoryOccupiersMapSingle, [_curCapPoint, _x]];
             };
         };
 
@@ -533,22 +533,22 @@ while{true} do
                 // NEW CAP POINT IN THE ARRAY! Flush the previous ones out to _territoryOccupiersMapConsolidated
                 if (_currentTerritoryName != "") then {
                     // Make sure we dont make a dummy first entry
-                    //_currentTerritoryOccupiers = [_currentTerritoryOccupiers, [], {getPlayerUID  _x}, "ASCEND"] call BIS_fnc_SortBy;
+                    //_currentTerritoryOccupiers = [_currentTerritoryOccupiers, [], {getPlayerUID _x}, "ASCEND"] call BIS_fnc_SortBy;
                     //diag_log format["CONSOLIDATION: Adding _territoryOccupiersMapConsolidated entry for %1 containing %2", _currentTerritoryName, _currentTerritoryOccupiers];
-                    _territoryOccupiersMapConsolidated = _territoryOccupiersMapConsolidated + [ [_currentTerritoryName, _currentTerritoryOccupiers] ];
+                    _territoryOccupiersMapConsolidated set [count _territoryOccupiersMapConsolidated, [_currentTerritoryName, _currentTerritoryOccupiers]];
                 };
 
                 _currentTerritoryName = _territoryName;
                 _currentTerritoryOccupiers = [_player];
             } else {
                 //diag_log format["CONSOLIDATION: Accumulating %2 at %1", _currentTerritoryName, _currentTerritoryOccupiers];
-                _currentTerritoryOccupiers = _currentTerritoryOccupiers + [_player];
+                _currentTerritoryOccupiers set [count _currentTerritoryOccupiers, _player];
             };
 
         } forEach _territoryOccupiersMapSingle;
 
         //diag_log format["LAST ENTRY: Adding _territoryOccupiersMapConsolidated entry for %1 containing %2", _currentTerritoryName, _currentTerritoryOccupiers];
-        _territoryOccupiersMapConsolidated = _territoryOccupiersMapConsolidated + [ [_currentTerritoryName, _currentTerritoryOccupiers] ];
+        _territoryOccupiersMapConsolidated set [count _territoryOccupiersMapConsolidated, [_currentTerritoryName, _currentTerritoryOccupiers]];
     };
 
 
