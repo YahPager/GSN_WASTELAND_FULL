@@ -1,6 +1,6 @@
-//	@file Name: clientCompile.sqf
-//	@file Author: [404] Deadbeat, [404] Costlyy, [GoT] JoSchaap, MercyfulFate, AgentRev
-//	@file Args:
+//        @file Name: clientCompile.sqf
+//        @file Author: [404] Deadbeat, [404] Costlyy, [GoT] JoSchaap, MercyfulFate, AgentRev
+//        @file Args:
 
 mf_notify_client = "client\functions\notifyClient.sqf" call mf_compile;
 mf_util_playUntil = "client\functions\playUntil.sqf" call mf_compile;
@@ -11,6 +11,7 @@ onKilled = "client\clientEvents\onKilled.sqf" call mf_compile;
 onKeyPress = "client\clientEvents\onKeyPress.sqf" call mf_compile;
 
 // Functions
+addWeaponInventory = "client\functions\addWeaponInventory.sqf" call mf_compile;
 fn_fitsInventory = "client\functions\fn_fitsInventory.sqf" call mf_compile;
 findHackedVehicles = "client\systems\adminPanel\findHackedVehicles.sqf" call mf_compile;
 serverMessage = "client\functions\serverMessage.sqf" call mf_compile;
@@ -48,10 +49,10 @@ loadGunStore = "client\systems\gunStore\loadGunStore.sqf" call mf_compile;
 gearProperties = "client\functions\gearProperties.sqf" call mf_compile;
 getCapacity = "client\functions\getCapacity.sqf" call mf_compile;
 getItemInfo = "client\functions\getItemInfo.sqf" call mf_compile;
-requestStoreObject = "client\functions\requestStoreObject.sqf" call mf_compile; 
+requestStoreObject = "client\functions\requestStoreObject.sqf" call mf_compile;
 
 // Custom paint/textures on vehicles
-//applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
+applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
 
 if (isNil "TPG_fnc_MP") then { TPG_fnc_MP = "\A3\functions_f\MP\fn_MP.sqf" call mf_compile };
 if (isNil "TPG_fnc_MPexec") then { TPG_fnc_MPexec = "\A3\functions_f\MP\fn_MPexec.sqf" call mf_compile };
