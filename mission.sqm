@@ -40,7 +40,7 @@ class Mission
 	randomSeed=11471163;
 	class Intel
 	{
-                briefingName="GSNGaming.com | A3Wasteland Stratis v0.9e | UPDATED 1.04";
+                briefingName="GSNGaming.com | A3Wasteland Stratis v0.9e";
                 overviewText="Wasteland survival sandbox by Team Wasteland - Map v9 made by GSN Pager of GSNGaming.com";
 		resistanceWest=0;
 		startWeather=0.02;
