@@ -112,7 +112,22 @@ player createDiaryRecord["GSN",
 <br/>
 	[CHANGED] - back to the MK-18 with the DMS Scope (NEW) as your Spawning Rifle.<br/>
 	[NEW] - Added Stratis Hospital to the map.<br/>
-	[NEW] - Got First-Aid Stations to work and added them back on the map..<br/>
+	[NEW] - Got First-Aid Stations to work and added them back on the map.<br/>
+"
+]
+];
+
+player createDiaryRecord["GSN",
+[
+"v9",
+"
+<br/>
+	[NEW] - Update from Team Wasteland to 0.9e.<br/>
+	[NOT] - Going with the Water and Food being Baked Beans and Water Bottle as per 0.9e We like the Baskets
+        and 10 Gallon Containers better.<br/>
+	[NEW] - WY-55 Hellcat (Unarmed) Added to the Regular Spawning Heli List and Civilian Heli Mission.<br/>
+	[NEW] - FV-720 Mora Added to the APC Mission List.<br/>
+	[NEW-Adding] - LRPS Long Range Precision Scope New in v1.08.<br/>
 "
 ]
 ];
