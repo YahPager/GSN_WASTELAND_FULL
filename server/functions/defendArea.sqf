@@ -11,7 +11,7 @@ Parameter(s):
 _this select 0: group (Group)
 _this select 1: defense position (Array)
 _this select 2: Vehicle class to move in as gunner (String, optional)
-    
+
 Returns:
 Boolean - success flag
 
@@ -39,25 +39,25 @@ _staticWeapons = [];
 
 // Find all nearby static defenses or vehicles without a gunner
 {
-    if (_x emptyPositions "gunner" > 0) then 
+    if (_x emptyPositions "gunner" > 0) then
     {
-        _staticWeapons set [count _staticWeapons, _x];    
+        _staticWeapons set [count _staticWeapons, _x];
     };
 } forEach _list;
 
 // Have the group man empty static defenses and vehicle turrets
 {
     // Are there still units available?
-    if (count _units > 0) then 
+    if (count _units > 0) then
     {
         private "_unit";
         _unit = _units select (count _units - 1);
-		
+
         _unit assignAsGunner _x;
         [_unit] orderGetIn true;
         sleep 15; // Give gunner time to get in, otherwise force.
         _unit moveInGunner _x;
-        
+
         _units resize (count _units - 1);
     };
 } forEach _staticWeapons;
@@ -69,62 +69,61 @@ _wp1 = _grp addWaypoint [_pos, 0];
 _wp1 setWaypointType "GUARD";
 [_grp, 1] setWaypointStatements ["true",
 '
-	(group this) spawn
-	{
-		sleep 60;
-		_this setCurrentWaypoint [_this, 2];
-	};
+(group this) spawn
+{
+    sleep 60;
+    _this setCurrentWaypoint [_this, 2];
+};
 '];
 
 _wp2 = _grp addWaypoint [_pos, 0];
 _wp2 setWaypointType "CYCLE";
 [_grp, 2] setWaypointStatements ["true",
 '
-	(group this) spawn
-	{
-		_this setCurrentWaypoint [_this, 1];
-	};
+(group this) spawn
+{
+    _this setCurrentWaypoint [_this, 1];
+};
 '];
 
 _grp setCurrentWaypoint [_grp, 1];
 
 {
-	// Prevent units from wandering too far and from going prone
-	[_x, _pos] spawn
-	{
-		private ["_unit", "_unitPos", "_targetPos", "_doMove"];
-		_unit = _this select 0;
-		_targetPos = _this select 1;
-		
-		while { alive _unit } do
-		{
-			if ((toUpper behaviour _unit) in ["COMBAT","STEALTH"]) then
-			{
-				if (stance _unit == "PRONE") then
-				{
-					_unit setUnitPos "MIDDLE";
-				};
-			}
-			else
-			{
-				if (unitPos _unit == "MIDDLE") then
-				{
-					_unit setUnitPos "AUTO";
-				};
-			};
-			
-			sleep 1;
-			
-			_unitPos = getPos _unit;
-			
-			if (_unitPos distance _targetPos > 75) then
-			{
-				_doMove = [[5 + random 65, 0], ([_targetPos, _unitPos] call BIS_fnc_dirTo) + (random 90) - 45] call BIS_fnc_rotateVector2D;
-				_unit move ([_targetPos, _doMove] call BIS_fnc_vectorAdd);
-				sleep 3;
-			};
-		};
-	};
+    // Prevent units from wandering too far and from going prone
+    [_x, _pos] spawn
+    {
+        private ["_unit", "_unitPos", "_targetPos", "_doMove"];
+        _unit = _this select 0;
+        _targetPos = _this select 1;
+
+        while { alive _unit } do
+        {
+            if ((toUpper behaviour _unit) in ["COMBAT","STEALTH"]) then
+            {
+                if (stance _unit == "PRONE") then
+                {
+                    _unit setUnitPos "MIDDLE";
+                };
+                        } else {
+                if (unitPos _unit == "MIDDLE") then
+                {
+                    _unit setUnitPos "AUTO";
+                };
+            };
+
+            sleep 1;
+
+            _unitPos = getPos _unit;
+
+            if (_unitPos distance _targetPos > 75) then
+            {
+                _doMove = [[5 + random 65, 0], ([_targetPos, _unitPos] call BIS_fnc_dirTo) + (random 90) - 45] call BIS_fnc_rotateVector2D;
+                _unit move ([_targetPos, _doMove] call BIS_fnc_vectorAdd);
+                _unit doMove ([_targetPos, _doMove] call BIS_fnc_vectorAdd);
+                sleep 3;
+            };
+        };
+    };
 } forEach units _grp;
 
 true
