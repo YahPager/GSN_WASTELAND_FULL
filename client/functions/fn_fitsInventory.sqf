@@ -12,28 +12,26 @@ _return = false;
 
 if (count _this > 2) then
 {
-        _allowedContainers = _this select 2;
-}
-else
-{
-        _allowedContainers = ["uniform", "vest", "backpack"];
+    _allowedContainers = _this select 2;
+} else {
+    _allowedContainers = ["uniform", "vest", "backpack"];
 };
 
 if (typeName _allowedContainers != "ARRAY") then
 {
-        _allowedContainers = [_allowedContainers];
+    _allowedContainers = [_allowedContainers];
 };
 
 {
-        if (typeName _x == "STRING") then
+    if (typeName _x == "STRING") then
+    {
+        switch (toLower _x) do
         {
-                switch (toLower _x) do
-                {
-                        case "uniform": { _return = _return || {_player canAddItemToUniform _item} };
-                        case "vest": { _return = _return || {_player canAddItemToVest _item} };
+                case "uniform": { _return = _return || {_player canAddItemToUniform _item} };
+                    case "vest": { _return = _return || {_player canAddItemToVest _item} };
                         case "backpack": { _return = _return || {_player canAddItemToBackpack _item} };
+                    };
                 };
-        };
-} forEach _allowedContainers;
+            } forEach _allowedContainers;
 
-_return
+            _return
