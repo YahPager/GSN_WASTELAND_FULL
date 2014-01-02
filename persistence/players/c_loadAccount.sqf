@@ -6,9 +6,9 @@ player globalchat "Loading player account...";
 _UID = getPlayerUID player;
 
 if ((call config_player_donations_enabled) == 1) then {
-	// Get any donation info they might have made
-	_donation = _UID + "_donation";
-	[_donation, _donation, "DonationMoney", "NUMBER"] call sendToServer;
+        // Get any donation info they might have made
+        _donation = _UID + "_donation";
+        [_donation, _donation, "DonationMoney", "NUMBER"] call sendToServer;
 };
 
 // Player location + health
@@ -18,9 +18,9 @@ if ((call config_player_donations_enabled) == 1) then {
 
 // Survival + wasteland inventory
 {
-	_keyName = _x select 0;
-	diag_log format["calling sendToServer with %1", _keyName];
-	[_UID, _UID, _keyName, "NUMBER"] call sendToServer;
+        _keyName = _x select 0;
+        diag_log format["calling sendToServer with %1", _keyName];
+        [_UID, _UID, _keyName, "NUMBER"] call sendToServer;
 } forEach call mf_inventory_all;
 
 // Player inventory
@@ -29,7 +29,7 @@ if ((call config_player_donations_enabled) == 1) then {
 [_UID, _UID, "Backpack", "STRING"] call sendToServer;
 
 // Wait on these as we need them present to fit in everything they had on them
-waitUntil {!isNil "uniformLoaded"};		
+waitUntil {!isNil "uniformLoaded"};                
 waitUntil {!isNil "vestLoaded"};
 waitUntil {!isNil "backpackLoaded"};
 
@@ -65,4 +65,6 @@ waitUntil {!isNil "handgunLoaded"};
 //END
 statsLoaded = 1;
 titleText ["","BLACK IN",4];
+//fixes the issue with saved player being GOD when they log back on the server!
+player allowDamage true;
 player globalchat "Player account loaded!";
