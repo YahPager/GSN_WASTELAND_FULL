@@ -199,8 +199,8 @@ _sideCountsForPlayerArray = {
         } forEach _players;
 
         if ((_blueCount > 0 && (_redCount > 0 || _greenCount > 0)) ||
-            (_redCount > 0 && (_blueCount > 0 || _greenCount > 0)) ||
-            (_greenCount > 0 && (_blueCount > 0 || _redCount > 0))) then {
+        (_redCount > 0 && (_blueCount > 0 || _greenCount > 0)) ||
+        (_greenCount > 0 && (_blueCount > 0 || _redCount > 0))) then {
             _contested = true;
         };
 
@@ -310,7 +310,7 @@ _updatePlayerTerritoryActivity = {
                     _territoryActivity set [0, "BLOCKEDDEFENDER"];
                 };
             } else {
-                    _territoryActivity set [0, _action];
+                _territoryActivity set [0, _action];
             };
 
             _territoryActivity set [1, CAPTURE_PERIOD - _newCapPointTimer];
@@ -330,7 +330,7 @@ _handleCapPointTick = {
     "_currentTerritoryName","_currentTerritoryOccupiers","_currentTerritoryTimer","_newTerritoryDetails","_newTerritoryDetails","_newTerritoryName",
     "_newTerritoryOccupiers","_currentSideCounts","_newSideCounts","_newDominantSide","_currentDominantSide","_action","_curCapPointTimer",
     "_newMarkerColor","_playerUIDs","_msg","_configEntry", "_capturePointHumanName","_value"];
-    
+
     //diag_log format["_handleCapPointTick called with %1", _this];
 
     // Into this method comes two arrays. One is the master array called _currentTerritoryData, containing all the
@@ -405,7 +405,7 @@ _handleCapPointTick = {
                 if (_action == "CAPTURE") then {
 
                     if (_currentTerritoryTimer == 0 && {_currentTerritoryOwner != ""}) then {
-                       // Just started capping. Let the current owners know!
+                        // Just started capping. Let the current owners know!
                         _currentDominantSideName = [_currentDominantSide] call _nameForSideStr;
 
                         _configEntry = [(call config_territory_markers), { _x select 0 == _currentTerritoryName }] call BIS_fnc_conditionalSelect;
@@ -429,7 +429,7 @@ _handleCapPointTick = {
 
                 if (_newCapPointTimer >= CAPTURE_PERIOD) then {
                     // Find the current marker color which denotes capture status
-                     _newMarkerColor = [_newDominantSide] call _markerColorForSideStr;
+                    _newMarkerColor = [_newDominantSide] call _markerColorForSideStr;
 
                     if (getMarkerColor _currentTerritoryName != _newMarkerColor) then {
                         // If the timer is above what we consider a successful capture and its not already theirs...
@@ -450,7 +450,7 @@ _handleCapPointTick = {
                 };
 
                 [_currentTerritoryOwner, _newTerritoryOccupiers, _newDominantSide, _action] call _updatePlayerTerritoryActivity;
-                
+
             } else {
                 // Either there's nobody there, or its filled with the current dominant side
                 _currentTerritoryData set [_i, [_currentTerritoryName, [], 0, _currentTerritoryOwner] ];
@@ -474,7 +474,7 @@ _handleCapPointTick = {
 //////////////////////////////////////////////////////////////////////////////
 
 while{true} do
-{        
+{
     private['_territoryOccupiersMapSingle', '_territoryOccupiersMapConsolidated', '_currentTerritoryName', '_currentTerritoryOccupiers', '_newCapturePointDetails'];
 
     _initTime = diag_tickTime;
