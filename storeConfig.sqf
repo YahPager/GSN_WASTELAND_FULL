@@ -227,6 +227,7 @@ accessoriesArray = compileFinal str
 	["RCO", "optic_Hamr", 150, "item"],
 	["DMS", "optic_DMS", 175, "item"],
 	["SOS", "optic_SOS", 200, "item"],
+ 	["LRPS", "optic_LRPS", 350, "item"],
 	["NVS", "optic_NVS", 400, "item"],
 	["TWS", "optic_tws", 600, "item"],
 	["TWS MG", "optic_tws_mg", 650, "item"],
@@ -587,6 +588,7 @@ tanksArray = compileFinal str
 	["IFV-6c Panther", "B_APC_Tracked_01_rcws_F", 20000, "vehicle", ""],
 	["IFV-6a Cheetah", "B_APC_Tracked_01_AA_F", 20000, "vehicle", ""],
 	["BTR-K Kamysh", "O_APC_Tracked_02_cannon_F", 20000, "vehicle", ""],
+	["FV-720 Mora", "I_APC_tracked_03_cannon_F", 20000, "vehicle", ""],
 	["ZSU-39 Tigris", "O_APC_Tracked_02_AA_F", 20000, "vehicle", ""],
 	["M2A1 Slammer", "B_MBT_01_cannon_F", 25000, "vehicle", ""],
 	["T-100 Varsuk", "O_MBT_02_cannon_F", 25000, "vehicle", ""],
@@ -607,6 +609,8 @@ helicoptersArray = compileFinal str
 	["AH-9 Pawnee", "B_Heli_Light_01_armed_F", 12000, "vehicle", ""], //little bird with guns and missiles
 	["PO-30 Orca", "O_Heli_Light_02_F", 13000, "vehicle", ""], //armed ka-60
 	["AH-99 Blackfoot", "B_Heli_Attack_01_F", 20000, "vehicle", ""], //attack chopper
+	["WY-55 Hellcat", "I_Heli_light_03_unarmed_F", 7500, "vehicle", ""], //Unarmed Indie chopper
+	["WY-55 Hellcat", "I_Heli_light_03_F", 15000, "vehicle", ""], //Armed Indie chopper
 	["Mi-48 Kajman", "O_Heli_Attack_02_F", 25000, "vehicle", ""], //attack chopper with gunner
 	["Mi-48 Kajman (Black)", "O_Heli_Attack_02_black_F", 25000, "vehicle", ""] //attack chopper with gunner
 ];
