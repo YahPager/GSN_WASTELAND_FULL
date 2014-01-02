@@ -24,7 +24,7 @@ _boxList =
 ];
 
 {
-    if (random 1 < 0.90) then // 80% chance of box spawning at each town
+    if (random 1 < 0.90) then // 90% chance of box spawning at each town
     {
         _pos = getMarkerPos (_x select 0);
         _currBox = _boxList call BIS_fnc_selectRandom;
@@ -70,10 +70,10 @@ _boxList =
         {
             case "Box_NATO_Wps_F":
             {
-                [_boxInstance, "hgun_P07_F", "hgun_ACPC2_F"] call fn_replaceWeapons;
+                [_boxInstance, "hgun_P07_F", ""] call fn_replaceWeapons;
                 [_boxInstance, "16Rnd_9x21_Mag", "9Rnd_45ACP_Mag"] call fn_replaceMagazines;
                 _boxInstance addWeaponCargoGlobal ["SMG_01_F", 1];
-                _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
+                // _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
                 _boxInstance addMagazineCargoGlobal ["9Rnd_45ACP_Mag", 7];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_45ACP_Mag_SMG_01", 9];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 18];
@@ -81,11 +81,11 @@ _boxList =
             };
             case "Box_East_Wps_F":
             {
-                [_boxInstance, "hgun_Rook40_F", "hgun_ACPC2_F"] call fn_replaceWeapons;
+                [_boxInstance, "hgun_Rook40_F", ""] call fn_replaceWeapons;
                 [_boxInstance, "16Rnd_9x21_Mag", "9Rnd_45ACP_Mag"] call fn_replaceMagazines;
                 [_boxInstance, "30Rnd_9x21_Mag", "30Rnd_45ACP_Mag_SMG_01"] call fn_replaceMagazines;
                 _boxInstance addWeaponCargoGlobal ["SMG_01_F", 2];
-                _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
+                // _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
                 _boxInstance addMagazineCargoGlobal ["9Rnd_45ACP_Mag", 7];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_45ACP_Mag_SMG_01", 9];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 18];
@@ -94,7 +94,7 @@ _boxList =
             case "Box_IND_Wps_F":
             {
                 _boxInstance addWeaponCargoGlobal ["SMG_02_F", 1];
-                _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
+                // _boxInstance addWeaponCargoGlobal ["hgun_ACPC2_F", 1];
                 _boxInstance addMagazineCargoGlobal ["9Rnd_45ACP_Mag", 7];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_9x21_Mag", 9];
                 _boxInstance addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 18];
