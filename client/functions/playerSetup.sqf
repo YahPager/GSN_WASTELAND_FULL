@@ -33,12 +33,12 @@ switch (playerSide) do
         if (typeof _player == "B_medic_F") then {
             _player addUniform "U_B_CombatUniform_mcam";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetB_camo";
+            _player addHeadgear "H_MilCap_rucamo";
         };
         if (typeof _player == "B_soldier_repair_F") then {
             _player addUniform "U_B_CombatUniform_mcam";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetB_camo";
+            _player addHeadgear "H_MilCap_rucamo";
         };
     };
 
@@ -56,12 +56,12 @@ switch (playerSide) do
         if (typeof _player == "O_medic_F") then {
             _player addUniform "U_O_CombatUniform_ocamo";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetIA_camo";
+            _player addHeadgear "H_Watchcap_camo";
         };
         if (typeof _player == "O_soldier_repair_F") then {
             _player addUniform "U_O_CombatUniform_ocamo";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetIA_camo";
+            _player addHeadgear "H_Watchcap_camo";
         };
     };
 
@@ -79,12 +79,12 @@ switch (playerSide) do
         if (typeof _player == "I_medic_F") then {
             _player addUniform "U_I_CombatUniform";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetB_plain_mcamo";
+            _player addHeadgear "H_Shemag_khk";
         };
         if (typeof _player == "I_soldier_repair_F") then {
             _player addUniform "U_I_CombatUniform";
             _player addVest "V_PlateCarrierGL_rgr";
-            _player addHeadgear "H_HelmetB_plain_mcamo";
+            _player addHeadgear "H_Shemag_khk";
         };
     };
 };
