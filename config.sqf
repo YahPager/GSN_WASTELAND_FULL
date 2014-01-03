@@ -16,7 +16,7 @@ cityList = compileFinal str
 ["Town_4", 250, "Military Range"],
 ["Town_5", 100, "Limeri Bay"],
 ["Town_6", 200, "Camp Maxwell"],
-["Town_7", 175, "Airfield"],
+["Town_7", 175, "Stratis Hospital"],
 ["Town_8", 100, "Strogos Bay"],
 ["Town_9", 100, "Nisi Bay"],
 ["Town_10", 300, "Agia Marina"],

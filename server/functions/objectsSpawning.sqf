@@ -19,47 +19,47 @@ _spawnedObjects = [];
 
 _createRandomObject =
 {
-    private ["_pos", "_minrad", "_maxrad", "_counter"];
-    _pos = _this select 0;
-    _minrad = _this select 1;
-    _maxrad = _this select 2;
-    _counter = _this select 3;
-
-    _pos = [_pos, _minrad, _maxrad, 2, 0, 60*(pi/180), 0] call findSafePos;
-    [_pos] call objectCreation;
-
-    //diag_log format ["Object spawn #%1 done", _counter];
+	private ["_pos", "_minrad", "_maxrad", "_counter"];
+	_pos = _this select 0;
+	_minrad = _this select 1;
+	_maxrad = _this select 2;
+	_counter = _this select 3;
+	
+	_pos = [_pos, _minrad, _maxrad, 2, 0, 60*(pi/180), 0] call findSafePos;
+	[_pos] call objectCreation;
+	
+	//diag_log format ["Object spawn #%1 done", _counter];
 };
 
 {
-    _pos = getMarkerPos (_x select 0);
-    _tradius = _x select 1;
-    _townname = _x select 2;
-    _objammount = ceil (_tradius / 25);  // spawns an object for every 25m radius the townmarker has, this might need tweaking!
-    _angleIncr = 360 / _objammount;
-    _langle = random _angleIncr;
-    //_minrad = 15;
-    //_maxrad = 30;
-    _minrad = 0;
-    _maxrad = _tradius / 2;
-
-    while {_lcounter < _objammount && _tradius > 30} do  // ignore towns smaller then 30m (this also ignores pythos island on stratis)
-    {
-        _lpos = [_pos, [[_maxrad, 0, 0], _langle] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd;
-        _spawnedObjects set [count _spawnedObjects, [_lpos, _minrad, _maxrad, _counter] spawn _createRandomObject];
-        //_minrad = _minrad + 15;
-        //_maxrad = _maxrad + 15;
-        _langle = _langle + _angleIncr;
-        _counter = _counter + 1;
-        _lcounter = _lcounter + 1;
-    };
-    //diag_log format["WASTELAND DEBUG - spawned %1 Objects in: %2",_lcounter,_townname];
-    _lcounter = 0;
+	_pos = getMarkerPos (_x select 0);
+	_tradius = _x select 1;
+	_townname = _x select 2;
+	_objammount = ceil (_tradius / 25);  // spawns an object for every 25m radius the townmarker has, this might need tweaking! 
+	_angleIncr = 360 / _objammount;
+	_langle = random _angleIncr;
+	//_minrad = 15;
+	//_maxrad = 30;
+	_minrad = 0;
+	_maxrad = _tradius / 2;
+	
+	while {_lcounter < _objammount && _tradius > 30} do  // ignore towns smaller then 30m (this also ignores pythos island on stratis)
+	{
+		_lpos = [_pos, [[_maxrad, 0, 0], _langle] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd;
+		_spawnedObjects set [count _spawnedObjects, [_lpos, _minrad, _maxrad, _counter] spawn _createRandomObject];
+		//_minrad = _minrad + 15;
+		//_maxrad = _maxrad + 15;
+		_langle = _langle + _angleIncr;
+		_counter = _counter + 1;
+		_lcounter = _lcounter + 1;
+	};	
+	//diag_log format["WASTELAND DEBUG - spawned %1 Objects in: %2",_lcounter,_townname];
+	_lcounter = 0;
 } forEach (call citylist);
 
 {
-    //diag_log format ["Waiting object spawn #%1", _forEachIndex + 1];
-    waitUntil {scriptDone _x};
+	//diag_log format ["Waiting object spawn #%1", _forEachIndex + 1];
+	waitUntil {scriptDone _x};
 } forEach _spawnedObjects;
 
 diag_log format["WASTELAND - Object spawning completed - %1 Objects Spawned on Stratis",_counter];

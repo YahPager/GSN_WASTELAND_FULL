@@ -112,10 +112,51 @@ player createDiaryRecord["GSN",
 <br/>
 	[CHANGED] - back to the MK-18 with the DMS Scope (NEW) as your Spawning Rifle.<br/>
 	[NEW] - Added Stratis Hospital to the map.<br/>
-	[NEW] - Got First-Aid Stations to work and added them back on the map..<br/>
+	[NEW] - Got First-Aid Stations to work and added them back on the map.<br/>
 "
 ]
 ];
+
+player createDiaryRecord["GSN",
+[
+"v9",
+"
+<br/>
+	[NEW] - Update from Team Wasteland Version 0.9f.<br/>
+	[NEW] - WY-55 Hellcat (Unarmed) add as a regular spawning Heli and as a CivHeli Mission.<br/>
+	[NEW] - LRPS Long Range Precision Scope added to Crates and Gun Stores.<br/>
+	[Changed] - Headgear so you can tell SIDES apart (Opfor, Blufor, Indie).<br/>
+"
+]
+];
+
+player createDiaryRecord ["changelog",
+[
+"0.9f",
+"
+<br/> [Added] - Money missions
+<br/> [Added] - Sell Crate Items option at stores when moving crate
+<br/> [Changed] - Reorganized loots for crates and trucks
+<br/> [Changed] - Disabled Warchest until fixed
+<br/> [Fixed] - Player icons position inside buildings
+<br/> [Fixed] - MRAPs and quadbikes not spawning
+<br/> [Fixed] - Broken money rewards for territories when player saving is enabled
+"
+]];
+
+player createDiaryRecord ["changelog",
+[
+"0.9e",
+"
+<br/> [Added] - Territory system
+<br/> [Added] - Jumping option (step over while running)
+<br/> [Added] - New weapons from v1.04 update
+<br/> [Changed] - Water and food now use water bottles and baked beans
+<br/> [Fixed] - Store object purchases not operating as intended
+<br/> [Fixed] - Objects purchased from stores not saving properly
+<br/> [Fixed] - Minor server-side memory leak
+"
+]];
 
 player createDiaryRecord ["changelog",
 [

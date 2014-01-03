@@ -11,20 +11,20 @@ private ["_start","_panelOptions","_debugSelect","_displayDebug"];
 _uid = getPlayerUID player;
 if (_uid call isAdmin) then
 {
-    _start = createDialog "DebugMenu";
-
-    _displayDebug = uiNamespace getVariable "DebugMenu";
-    _debugSelect = _displayDebug displayCtrl debugMenu_option;
-
-    _panelOptions = ["Access Gun Store",
-    "Access General Store",
-    //"Access Vehicle Store",
-    "Access Respawn Dialog",
-    "Access Proving Grounds",
-    "Show Server FPS"
-    ];
-
-    {
-        _debugSelect lbAdd _x;
-    } forEach _panelOptions;
+	_start = createDialog "DebugMenu";
+	
+	_displayDebug = uiNamespace getVariable "DebugMenu";
+	_debugSelect = _displayDebug displayCtrl debugMenu_option;
+	
+	_panelOptions = ["Access Gun Store",
+					"Access General Store",
+					"Access Vehicle Store",
+					"Access Respawn Dialog",
+					"Access Proving Grounds",
+	                "Show Server FPS"
+	];
+	
+	{
+		_debugSelect lbAdd _x;
+	} forEach _panelOptions;
 };

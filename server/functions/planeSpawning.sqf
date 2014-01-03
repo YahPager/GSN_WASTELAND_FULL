@@ -10,14 +10,14 @@ private "_counter";
 _counter = 0;
 
 {
-    if (["planeSpawn_", _x] call fn_findString == 0) then
-    {
-        if (random 1 < 0.25) then // 25% chance spawning
-        {
-            [markerPos _x, markerDir _x] call planeCreation;
-            _counter = _counter + 1;
-        };
-    };
+	if (["planeSpawn_", _x] call fn_findString == 0) then
+	{
+		if (random 1 < 0.75) then // 75% chance spawning
+		{
+			[markerPos _x, markerDir _x] call planeCreation;
+			_counter = _counter + 1;
+		};
+	};
 } forEach allMapMarkers;
 
 diag_log format["WASTELAND SERVER - %1 Planes Spawned",_counter];

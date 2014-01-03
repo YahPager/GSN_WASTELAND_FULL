@@ -12,7 +12,7 @@ class Header
 	maxPlayers=120;
 };
 author="Team Wasteland - A3Wasteland.com";
-onLoadName = "GSN A3WL Stratis v0.9d";
+onLoadName = "A3Wasteland Stratis";
 onLoadMission = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewText = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewTextLocked = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
@@ -28,7 +28,7 @@ overviewPicture = "Loading.jpg";
 #include "client\systems\groups\dialog\groupManagement.hpp"
 #include "client\systems\gunStore\dialog\gunshop_settings.hpp"
 #include "client\systems\generalStore\dialog\genstore_settings.hpp"
-/*#include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"*/
+#include "client\systems\vehicleStore\dialog\vehiclestore_settings.hpp"
 #include "client\systems\adminPanel\dialog\adminMenu.hpp"
 #include "client\systems\adminPanel\dialog\modMenu.hpp"
 #include "client\systems\adminPanel\dialog\serverAdminMenu.hpp"
@@ -43,7 +43,7 @@ overviewPicture = "Loading.jpg";
 class RscTitles
 {
 	#include "addons\proving_ground\PG_rsctitles.hpp"
-	#include "client\systems\hud\dialog\hud.hpp"
+ 	#include "client\systems\hud\dialog\hud.hpp"
 	#include "client\systems\playerMenu\dialog\welcome.hpp"
 	#include "client\systems\newicons.hpp"
 };
@@ -58,7 +58,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GenStore2
     {
         name = "GenStore2";
@@ -67,7 +67,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GenStore3
     {
         name = "GenStore3";
@@ -76,7 +76,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GunStore1
     {
         name = "GunStore1";
@@ -85,7 +85,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GunStore2
     {
         name = "GunStore2";
@@ -94,7 +94,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GunStore3
     {
         name = "GunStore3";
@@ -103,7 +103,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class GunStore4
     {
         name = "GunStore4";
@@ -112,9 +112,8 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-};
-/*
-	class VehStore1
+	
+	/*class VehStore1
     {
         name = "VehStore1";
         face = "GreekHead_A3_06";
@@ -122,7 +121,7 @@ class CfgIdentities
         speaker = "Male01ENG";
         pitch = 1.1;
     };
-
+	
 	class VehStore2
     {
         name = "VehStore2";
@@ -130,5 +129,5 @@ class CfgIdentities
         glasses = "None";
         speaker = "Male01ENG";
         pitch = 1.1;
-    };
-};*/
+    };*/
+};
