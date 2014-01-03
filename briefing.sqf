@@ -110,7 +110,7 @@ player createDiaryRecord["GSN",
 "v8",
 "
 <br/>
-	[CHANGED] - back to the MK-18 with the DMS Scope (NEW) as your Spawning Rifle.<br/>
+	[CHANGED] - Back to the MK-18 with the DMS Scope (NEW) as your Spawning Rifle.<br/>
 	[NEW] - Added Stratis Hospital to the map.<br/>
 	[NEW] - Got First-Aid Stations to work and added them back on the map.<br/>
 "
@@ -126,6 +126,7 @@ player createDiaryRecord["GSN",
 	[NEW] - WY-55 Hellcat (Unarmed) add as a regular spawning Heli and as a CivHeli Mission.<br/>
 	[NEW] - LRPS Long Range Precision Scope added to Crates and Gun Stores.<br/>
 	[Changed] - Headgear so you can tell SIDES apart (Opfor, Blufor, Indie).<br/>
+	[NEW] - Money Missions as added by Team Wasteland.<br/>
 "
 ]
 ];
