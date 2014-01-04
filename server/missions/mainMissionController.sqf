@@ -18,9 +18,9 @@ _MainMissions =
 	["mission_Convoy", 1.5],
 	["mission_HostileHeliFormation", 0.5],  
 	["mission_APC", 0.5],
-	//["mission_MBT", 1],
-	//["mission_LightArmVeh", 1],
-	//["mission_ArmedHeli", 1],
+	/*["mission_MBT", 0],
+	["mission_LightArmVeh", 0],
+	["mission_ArmedHeli", 0],*/
 	["mission_CivHeli", 1],
 	["mission_Outpost", 1]
 ];
