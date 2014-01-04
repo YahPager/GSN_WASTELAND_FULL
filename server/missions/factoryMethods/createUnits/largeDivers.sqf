@@ -8,7 +8,7 @@ private ["_group", "_pos", "_skill", "_leader", "_man2", "_man3", "_man4", "_man
 
 _group = _this select 0;
 _pos = _this select 1;
-_skill = if (["A3W_missionsDifficulty", 0] call getPublicVar > 0) then { 0.75 } else { 0.5 };
+_skill = if (["A3W_missionsDifficulty", 0] call getPublicVar > 0) then { 1.0 } else { 0.8 };
 
 // Rifleman
 _leader = _group createUnit ["C_man_polo_1_F", [(_pos select 0) + 10, _pos select 1, 0], [], 1, "Form"];
