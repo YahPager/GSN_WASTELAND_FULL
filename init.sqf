@@ -61,4 +61,4 @@ if (isServer) then
 [] execVM "addons\proving_Ground\init.sqf";
 /*[] execVM "addons\scripts\DynamicWeatherEffects.sqf";*/
 [] execVM "addons\JumpMF\init.sqf";
-[] execVM "scripts\twsremove.sqf";
+/*[] execVM "scripts\twsremove.sqf";*/
