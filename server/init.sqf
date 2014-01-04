@@ -118,11 +118,11 @@ if (["A3W_serverSpawning", 0] call getPublicVar > 0) then
 	_vehSpawn = [] execVM "server\functions\vehicleSpawning.sqf";
 	waitUntil {sleep 0.1; scriptDone _vehSpawn};
 	
-	if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
+	/*if (["A3W_planeSpawning", 0] call getPublicVar > 0) then
 	{
 		_planeSpawn = [] execVM "server\functions\planeSpawning.sqf";
 		waitUntil {sleep 0.1; scriptDone _planeSpawn};
-	};
+	};*/
 	
 	if (["A3W_boatSpawning", 0] call getPublicVar > 0) then
 	{

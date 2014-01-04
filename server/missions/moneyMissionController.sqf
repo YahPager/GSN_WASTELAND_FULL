@@ -15,7 +15,7 @@ _MoneyMissions =
 [
 	["mission_MoneyShipment"],
 	//["mission_MobMoney"],
-	["mission_SunkenTreasure"]
+	//["mission_SunkenTreasure"]
 ];
 //_MoneyMissions = [[mission_MoneyShipment, "mission_MoneyShipment"]];
 _notPlayedMoneyMissions = +_MoneyMissions;

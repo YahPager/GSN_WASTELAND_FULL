@@ -12,16 +12,19 @@ _counter = 0;
 
 _boxList =
 [
-	"Box_NATO_Wps_F",
-	"Box_NATO_WpsSpecial_F",
-	"Box_East_Wps_F",
-	"Box_East_WpsSpecial_F",
-	"Box_IND_Wps_F",
-	"Box_IND_WpsSpecial_F"
+"Box_NATO_Wps_F",
+"Box_NATO_WpsLaunch_F",
+"Box_NATO_WpsSpecial_F",
+"Box_East_Wps_F",
+"Box_East_WpsLaunch_F",
+"Box_East_WpsSpecial_F",
+"Box_IND_Wps_F",
+"Box_IND_WpsLaunch_F",
+"Box_IND_WpsSpecial_F"
 ];
 
 {
-	if (random 1 < 0.50) then // 50% chance of box spawning at each town
+	if (random 1 < 0.90) then // 50% chance of box spawning at each town
 	{
 		_pos = getMarkerPos (_x select 0);
 		_boxClass = _boxList call BIS_fnc_selectRandom;
