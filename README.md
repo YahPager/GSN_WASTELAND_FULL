@@ -10,3 +10,5 @@ This server was once 13th in the world (7th in the world in Wasteland Mods) and 
 get this server back where it was with your feedback.
 
 ~ GSN-Pager
+
+Moved to a new repository https://github.com/GSN-Pager/GSNGaming.com_Wasteland.Stratis This one will no longer be updated.
